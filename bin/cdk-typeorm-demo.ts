@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { CdkTypeormDemoStack } from '../lib/cdk-typeorm-demo-stack';
+import { CdkTypeormDemoStack } from '../lib/cdk-typeorm-demo-stack-3';
 
 const app = new cdk.App();
 new CdkTypeormDemoStack(app, 'CdkTypeormDemoStack', {
@@ -15,7 +15,7 @@ new CdkTypeormDemoStack(app, 'CdkTypeormDemoStack', {
 
   /* Uncomment the next line if you know exactly what Account and Region you
    * want to deploy the stack to. */
-  // env: { account: '123456789012', region: 'us-east-1' },
+  env: { region: 'us-east-2' },
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
