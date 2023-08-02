@@ -6,6 +6,7 @@ import { Timeslot } from "./entity/Timeslot"
 import { dataSource } from "./app-data-source"
 import { OrderContact } from "./entity/OrderContact"
 import { In } from "typeorm"
+require("dotenv").config();
 
 // establish database connection and store repositories
 dataSource
@@ -358,6 +359,7 @@ app.put("/addcontacttoorder/:orderId", async (req: Request, res: Response) => {
 
 
 // start express server
+console.log('port' + process.env.NODE_DOCKER_PORT)
 const PORT = process.env.NODE_DOCKER_PORT || 8080;
 // start express server
 app.listen(PORT, () => {
