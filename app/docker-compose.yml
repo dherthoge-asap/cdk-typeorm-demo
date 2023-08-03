@@ -4,19 +4,34 @@ services:
   mysql:
     image: mysql:8.0
     ports:
-      - 62935:3306
+      - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_USER: test
       MYSQL_PASSWORD: test
       MYSQL_DATABASE: test
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-utest",
+          "-ptest"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 20
   app:
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     build: .
     command: npm run start
     ports:
-      - 6232:3000
+      - 3000:3000
     environment:
       - DB_HOST=mysql
       - DB_USER=$MYSQLDB_USER

@@ -362,6 +362,6 @@ app.put("/addcontacttoorder/:orderId", async (req: Request, res: Response) => {
 console.log('port' + process.env.NODE_DOCKER_PORT)
 const PORT = process.env.NODE_DOCKER_PORT || 8080;
 // start express server
-app.listen(PORT, () => {
+app.listen(3000, () => {
     console.log(`Server is running on port ${PORT}.`)
 })
